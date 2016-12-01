@@ -6,7 +6,7 @@ angular.module('imgApp')
             var file = $scope.myFile;
             console.log('file is ' );
             console.dir(file);
-            var uploadUrl = "/api/imgs";
+            var uploadUrl = "/api/imgs/uploadTest";
             fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 

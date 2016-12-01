@@ -10,10 +10,15 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
-// router.post('/', upload.single('file'), controller.create);
-router.post('/', controller.create);
+router.post('/', upload.single('file'), controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
+
+router.get('/files/getAll', controller.getFiles);
+router.get('/file/:fileName', controller.download);
+
+router.get('/files/:projid', controller.getFilesForProj);
+router.get('/file/:projid/:fileName', controller.downloadResume);
 
 module.exports = router;

@@ -4,6 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var Img = require('../img/img.model');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -30,6 +31,39 @@ exports.create = function (req, res, next) {
     if (err) return validationError(res, err);
     var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
     res.json({ token: token });
+  });
+};
+
+
+//Apply for a project
+exports.applyForProject = function (req, res, next) {
+  console.log(req.body);
+  var duplicate = 0;
+  User.findById(req.body.userid, function(err, user){
+    if (err) { return handleError(res, err); }
+    if(!user) { return res.send(404); }
+    else {
+      var projectsApplied = user.projectsApplied;
+      for(var i=0; i<projectsApplied.length; i++){
+        if(projectsApplied[i] == req.body.projectid){
+          duplicate = 1;
+        }
+      }
+      console.log(duplicate);
+      if(duplicate == 0){
+        User.findByIdAndUpdate(req.body.userid, {$push: {"projectsApplied": req.body.projectid}}, {new : true}, function(err, model){
+          if(err){ return handleError(res, err); }
+          Img.findByIdAndUpdate(req.body.projectid, {$push: {"studentsApplied": req.body.userid}}, {new : true}, function(err, img){
+            if(err){ return handleError(res, err); }    
+            return res.json(201, img);
+          });
+        });
+      }
+      else{
+        return res.status(204).json("You have already applied for this project");
+      }
+
+    }
   });
 };
 
@@ -89,7 +123,8 @@ exports.me = function(req, res, next) {
     if (err) return next(err);
     if (!user) return res.json(401);
     res.json(user);
-  });
+  })
+  .populate('projectsCreated')
 };
 
 /**

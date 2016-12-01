@@ -4,6 +4,9 @@ var express = require('express');
 var controller = require('./user.controller');
 var config = require('../../config/environment');
 var auth = require('../../auth/auth.service');
+var multer  = require('multer');
+var storage2 = require('../../components/imageStorage').storage2;
+var upload = multer({ storage: storage2, limits: {fileSize: 1000000}});
 
 var router = express.Router();
 
@@ -13,5 +16,6 @@ router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
+router.post('/apply', upload.single('file'), controller.applyForProject);
 
 module.exports = router;

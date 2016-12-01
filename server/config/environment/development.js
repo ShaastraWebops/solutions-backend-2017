@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/solutions2017'
   },
 
-  seedDB: true
+  seedDB: false
 };

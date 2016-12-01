@@ -1,18 +1,14 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<form>
-  <input type="text" ng-model="name">
-  <input type="text" ng-model="description">
-  <input type="text" ng-model="incentives">
-  <input 
+<div ng-repeat="file in files"><a ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div><br><br><br>
+<input 
     type="file" 
     ngf-select 
     file-model="myFile" 
     name="file" 
     ngf-max-size="5MB" 
-  />
-  <button ng-click="submit()">Submit</button>
-</form>
+/>
+<button ng-click="applyForProject('58404842a71d6dca758ef106')">Apply</button>
 </div>
 
 <footer class="footer">
