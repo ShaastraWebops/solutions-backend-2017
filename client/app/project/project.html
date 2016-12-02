@@ -1,20 +1,18 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div ng-repeat="file in files"><a ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div><br><br><br>
-<input 
+<button ng-repeat = "project in allProjects track by $index" ng-click="getInfo($index)">Get info for {{project.name}}</button>
+
+<h1 ng-if="selectedProject">{{selectedProject.name}}</h1>
+<div ng-if="selectedProject">{{selectedProject.description}}</div>
+<div ng-if="selectedProject">{{selectedProject.incentives}}</div>
+
+<div ng-repeat="file in files"><a ng-if="selectedProject.name == file.split('.')[0]" ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div><br><br><br>
+<input ng-if="selectedProject"
     type="file" 
     ngf-select 
     file-model="myFile" 
     name="file" 
     ngf-max-size="5MB" 
 />
-<button ng-click="applyForProject('58404842a71d6dca758ef106')">Apply</button>
+<button ng-if="selectedProject" ng-click="applyForProject(selectedProject._id)">Apply</button>
 </div>
-
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
-</footer>

@@ -51,13 +51,13 @@ exports.getFiles = function (req, res) {
 
 exports.downloadResume = function (req, res) {
   var file = req.params.fileName;
-  var path = 'client/assets/' + req.params.projid + '/' + file;
+  var path = 'client/assets/uploads/' + req.params.projid + '/' + file;
   console.log(path);
   res.download(path);
 }
 
 exports.getFilesForProj = function (req, res) {
-  fs.readdir('client/assets/' + req.params.projid + '/', function(err, items) {
+  fs.readdir('client/assets/uploads/' + req.params.projid + '/', function(err, items) {
     console.log(items);
     res.json(items);
   });

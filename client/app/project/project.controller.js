@@ -3,7 +3,6 @@
 angular.module('imgApp')
   .controller('ProjectCtrl', function ($scope, $http, socket, Auth, $location, fileUpload) {
     
-
     $http.get('/api/imgs').then(function (response){
       $scope.allProjects = response.data;
       console.log($scope.allProjects);
@@ -15,6 +14,11 @@ angular.module('imgApp')
     });
 
     $scope.userid = Auth.getCurrentUser()._id;
+
+    $scope.getInfo = function(index){
+      $scope.selectedProject = $scope.allProjects[index];
+      console.log($scope.selectedProject);
+    }
 
     $scope.applyForProject = function(projid){
       console.log($scope.userid);
