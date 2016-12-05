@@ -2,9 +2,13 @@
 
 angular.module('imgApp')
   .controller('ProjectCtrl', function ($scope, $http, socket, Auth, $location, fileUpload) {
-    
+    $scope.allProjects = [];
     $http.get('/api/imgs').then(function (response){
-      $scope.allProjects = response.data;
+      $scope.totalProjects = response.data;
+      for(var i=0; i<$scope.totalProjects.length; i++){
+        if($scope.totalProjects[i].isApproved)
+          $scope.allProjects.push($scope.totalProjects[i]);
+      }
       console.log($scope.allProjects);
     });
 

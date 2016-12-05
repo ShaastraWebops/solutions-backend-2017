@@ -38,8 +38,14 @@ User.find({}).remove(function() {
     password: 'qwerty'
   }, {
     provider: 'local',
-    role: 'company',
+    role: 'admin',
     name: 'Admin',
+    email: 'admin@test.com',
+    password: 'qwerty'
+  }, {
+    provider: 'local',
+    role: 'company',
+    name: 'Company',
     email: 'company@test.com',
     password: 'qwerty'
   }, function() {

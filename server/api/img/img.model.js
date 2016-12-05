@@ -8,7 +8,8 @@ var ImgSchema = new Schema({
   description: String,
   incentives: String,
   studentsApplied: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  createdBy: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
+  isApproved: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Img', ImgSchema);
