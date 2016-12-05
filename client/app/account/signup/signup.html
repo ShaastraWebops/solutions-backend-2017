@@ -1,16 +1,96 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<head>
+  <title>Shaastra Solutions</title>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-<div class="container">
-  <div class="row">
+  <style type="text/css">
+    /*Body Formatting*/
+    body {
+        font: 22px "Montserrat", sans-serif;
+        line-height: 2.8;
+        color: #25262A;
+    }
+  /*Background and font color for middle container*/  
+    .bg-2 { 
+        background-color: #474e5d; /* Dark Blue */
+        color: #ffffff;
+    }
+  /*Background and font color for form*/  
+    .bg-3 { 
+        background-color: #ffffff; /* White */
+        color: #555555;
+    }
+  /*Padding for middle container*/  
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+  /*Margin for form*/ 
+    form {
+      margin-left: 10%;
+      margin-right: 30%;
+
+    }
+  /*Formatting for top error alert after clicking submit*/  
+    .error {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 2%;
+
+    }
+  /*Changing border color of input box*/  
+    .red{
+      border-color: red;
+    }
+  /*Radio button*/
+    input[type="radio"].fancy {
+          opacity: 0;
+          margin-right: -12px;
+      }
+
+      input[type="radio"].fancy + label::before {
+          content: "";
+          overflow: hidden;
+          font-size: 10px;
+          text-align: center;
+          margin-right: 3px;
+          display: inline-block;
+          vertical-align: middle;
+          border: 1px solid #333333;
+          background-color: #EEEEEE;
+          width: 12px;
+          height: 12px;
+          -moz-border-radius: 6px;
+          -webkit-border-radius: 6px;
+          border-radius: 6px;
+      }
+
+      input[type="radio"].fancy:checked + label::before {
+          content: "•";
+          color: #777777;
+          background-color: #FFFFFF;
+      }
+
+      input[type="radio"].fancy:disabled + label::before {
+          background-color: #999999;
+      }
+  </style>
+</head>
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
+  <div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
     <div class="col-sm-12">
       <h1>Sign up</h1>
     </div>
-    <div class="col-sm-12">
+    <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
+      <h3>Let us get to know you!</h3>
+      <p>Please fill in your details in the respective columns and embark on an amazing journey with us!!</p>
+    </div>
+    <div class="col-sm-12 container-fluid bg-3 text-left" style="margin-top: 2%;">
       <form class="form" name="form" ng-submit="register(form)" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-          <label>Name</label>
+          <label>Name:</label>
 
           <input type="text" name="name" class="form-control" ng-model="user.name"
                  required/>
@@ -21,7 +101,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                             'has-error': form.email.$invalid && submitted }">
-          <label>Email</label>
+          <label>Email:</label>
 
           <input type="email" name="email" class="form-control" ng-model="user.email"
                  required
@@ -39,7 +119,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                             'has-error': form.password.$invalid && submitted }">
-          <label>Password</label>
+          <label>Password:</label>
 
           <input type="password" name="password" class="form-control" ng-model="user.password"
                  ng-minlength="3"
@@ -53,9 +133,26 @@
             {{ errors.password }}
           </p>
         </div>
+        <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted,
+                                            'has-error': form.phone.$invalid && submitted }">
+          <label>Phone Number:</label>
 
-        <input type="radio" ng-model="role" value="user"> Student
-        <input type="radio" ng-model="role" value="company"> Company <br><br><br>
+          <input type="phone" name="phone" class="form-control" ng-model="user.phone"
+                 required
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.phone.$error.number && submitted">
+            Doesn't look like a valid Phone number.
+          </p>
+          <p class="help-block" ng-show="form.phone.$error.required && submitted">
+            What's your phone number?
+          </p>
+          <p class="help-block" ng-show="form.email.$error.mongoose">
+            {{ errors.email }}
+          </p>
+        </div>
+
+        <input type="radio" ng-model="role" value="user" style="margin-left: 2%;"> Student
+        <input type="radio" ng-model="role" value="company" style="margin-left: 2%;"> Company <br><br><br>
 
         <div>
           <button class="btn btn-inverse btn-lg btn-login" type="submit">

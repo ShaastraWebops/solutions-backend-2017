@@ -1,14 +1,142 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<head>
+  <title>
+    Shaastra Solutions
+  </title>
+  <style type="text/css">
+  h3,ul
+  {
+    display: inline-block;
+  }
+  a
+  {
+    color: #F1F3FC;
+  }
+  </style>
+</head>
+<div ng-include="'components/navbar/navbar.html'" style="margin-bottom: 0%; height: 20%;"></div>
 
-<header class="hero-unit" id="banner">
+<!-- <header class="hero-unit" id="banner">
   <div class="container">
     <h1>'Allo, 'Allo!</h1>
     <p class="lead">Kick-start your next web app with Angular Fullstack</p>
     <img src="assets/images/yeoman.png" alt="I'm Yeoman">
   </div>
-</header>
+</header> -->
+<div class="container-fluid bg-2 hero-unit col-md-12" style="height: 10%; background-color: #393C47; padding-top: 6%; margin-right: 0%; text-align: right;">
+      <a href="/" class="navbar-brand" style="font-size: 20px; color: #FFF2F0">Shaastra Solutions</a>
+      <ul class="nav nav-pills" align="right" style="font-size: 18px;">
+        <li role="presentation"><a href="#">Project</a></li>
+        <li role="presentation"><a href="#">Impact</a></li>
+        <li role="presentation"><a href="#">About</a></li>
+        <li role="presentation"><a href="#">Contact Us</a></li>
+      </ul>
+      
+</div>
 
-<div class="container">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3>
+          Shaastra Solutions:
+        </h3>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="page-header">
+            <h1>
+              <small>Partners:</small>
+            </h1>
+          </div>
+          <div class="row">
+            <div class="col-md-4" align="center">
+              <img alt="Partner 1" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>Partner 1</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="Partner 2" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>Partner 2</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="Partner 3" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>Partner 3</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4" align="center">
+              <img alt="Partner 4" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>Partner 4</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="Partner 5" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>Partner 5</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="Partner 6" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>Partner 6</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="page-header">
+            <h1>
+              <small>People:</small>
+            </h1>
+          </div>
+          <div class="row">
+            <div class="col-md-4" align="center">
+              <img alt="People 1" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>People 1</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="People 2" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>People 2</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="People 3" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>People 3</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4" align="center">
+              <img alt="People 4" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>People 4</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="People 5" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>People 5</p>
+            </div>
+            <div class="col-md-4" align="center">
+              <img alt="People 6" height="80%" width="80%" src="../assets/images/images.jpg" />
+              <p>People 6</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 3%;">
+        <div class="col-md-4" align="center">
+          <h3>
+            Best Describes You??
+          </h3>
+        </div>
+        <div class="col-md-4" align="center">
+           
+          <button type="button" class="btn btn-primary btn-lg">
+            Student
+          </button>
+        </div>
+        <div class="col-md-4" align="center">
+           
+          <button type="button" class="btn btn-warning btn-lg">
+            Company
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Features:</h1>
@@ -16,6 +144,26 @@
         <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
       </ul>
     </div>
+  </div>
+
+  <div class="row">
+        <div class="col-md-3" style="padding:10px;text-align:center">
+          <img src="assets/img/logo.png">
+        </div>
+        <div class="col-md-3" style="padding:10px;text-align:center">
+          <img src="assets/img/logo.png">
+        </div>
+        
+  </div>
+  <div class="row">
+        <div class="col-md-3" style="padding:10px;text-align:center">
+          <img src="assets/img/logo.png">
+        </div>
+        <div class="col-md-3" style="padding:10px;text-align:center">
+          <img src="assets/img/logo.png">
+        </div>
+        
+      </div>
   </div>
 
   <form class="thing-form">
@@ -27,7 +175,7 @@
       </span>
     </p>
   </form>
-</div>
+</div> -->
 
 <footer class="footer">
   <div class="container">
