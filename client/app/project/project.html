@@ -8,7 +8,7 @@
         
         line-height: 2.8;
         color: #25262A;
-        margin-right: 1%;
+        
     }
   /*Background and font color for middle container*/  
     .bg-2 { 
@@ -20,6 +20,7 @@
     .bg-3 { 
         background-color: #ffffff; /* White */
         color: #555555;
+
     }
   /*Padding for middle container*/  
     .container-fluid {
@@ -44,6 +45,11 @@
     .red{
       border-color: red;
     }
+    .custom{
+      font: 15px "Montserrat", sans-serif;
+      border-radius: 2%;
+      margin-top: 2%;
+    }
   
   </style>
 </head>
@@ -52,32 +58,34 @@
 <div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
 	<div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
 	    <div class="col-sm-12">
-	      <h1>Sign up</h1>
+	      <h1>Projects</h1>
 	    </div>
 	    <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
 	      <h3>Hello user!</h3>
 	      <p>Find information on projects here!!</p>
 	    </div>
-	    <header>
+	    <div class="page-header">
 	      <h1>
 	        <small>Get information for:</small>
 	      </h1>
-	    </header>
-		<button ng-repeat = "project in allProjects track by $index" ng-click="getInfo($index)">Get info for {{project.name}}</button>
+	    </div>
+		<button class="btn btn-inverse btn-lg btn-login" style="margin-top: 2%; margin-left: 1%;" ng-repeat = "project in allProjects track by $index" ng-click="getInfo($index)"><span class="glyphicon glyphicon-plus"></span> {{project.name}}</button>
 
-		<h1 ng-if="selectedProject">{{selectedProject.name}}</h1>
-		<div ng-if="selectedProject">{{selectedProject.description}}</div>
-		<div ng-if="selectedProject">{{selectedProject.incentives}}</div>
+		<h1 class="bg3 page-header" ng-if="selectedProject" style="margin-left: 5%;">{{selectedProject.name}}</h1>
+		<div class="bg3" ng-if="selectedProject" style="margin-left: 5%;">{{selectedProject.description}}</div>
+		<div class="bg3" ng-if="selectedProject" style="margin-left: 5%;">{{selectedProject.incentives}}</div>
 
-		<div ng-repeat="file in files"><a ng-if="selectedProject.name == file.split('.')[0]" ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div><br><br><br>
+		<div class="bg3" ng-repeat="file in files" style="margin-left: 5%;"><a ng-if="selectedProject.name == file.split('.')[0]" ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div>
 			<input ng-if="selectedProject"
+				class="custom" 
+				style="margin-left: 5%; margin-top: 0%;" 
 			    type="file" 
 			    ngf-select 
 			    file-model="myFile" 
 			    name="file" 
 			    ngf-max-size="5MB" 
 			/>
-			<button ng-if="selectedProject" ng-click="applyForProject(selectedProject._id)">Apply</button>
-		</div>
+			<button class="btn btn-inverse btn-lg btn-login" ng-if="selectedProject" ng-click="applyForProject(selectedProject._id)" style="margin-top: 2%; margin-left: 5%;">Apply</button>
+		
 	</div>
 </div>		

@@ -1,6 +1,65 @@
+<head>
+  <title>Shaastra Solutions</title>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <style type="text/css">
+    /*Body Formatting*/
+    body {
+        
+        line-height: 2.8;
+        color: #25262A;
+        
+    }
+  /*Background and font color for middle container*/  
+    .bg-2 { 
+        font: 22px "Montserrat", sans-serif;
+        background-color: #474e5d; /* Dark Blue */
+        color: #ffffff;
+    }
+  /*Background and font color for form*/  
+    .bg-3 { 
+        background-color: #ffffff; /* White */
+        color: #555555;
+        margin-right: 5%;
+    }
+  /*Padding for middle container*/  
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+  /*Margin for form*/ 
+    table {
+      font: 18px "Montserrat", sans-serif;
+      margin-left: 0.5%;
+      margin-right: 0.5%;
+
+    }
+  /*Formatting for top error alert after clicking submit*/  
+    .error {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 2%;
+
+    }
+  /*Changing border color of input box*/  
+    .red{
+      border-color: red;
+    }
+  
+  </style>
+</head>
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<table style="width:100%; font-family: arial, sans-serif; border-collapse: collapse;" id="table1">
+<div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
+  <div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
+    <div class="col-sm-12">
+      <h1>Sign up</h1>
+    </div>
+    <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
+      <h3>Hello admin!</h3>
+      <p>Approve projects of your choice here!!</p>
+    </div>
+    <table style="width:100%; margin-top: 5%; border-collapse: collapse; margin-right: 0.5%;" id="table1"  class="bg3 table table-striped table-bordered col-md-12">
       <thead>
         <tr>
           <th>No.</th>
@@ -22,3 +81,5 @@
         </tr>
       </tbody>
     </table>
+  </div>
+ </div> 
