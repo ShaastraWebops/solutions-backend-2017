@@ -1,6 +1,120 @@
+<head>
+  <title>Shaastra Solutions</title>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <style type="text/css">
+    /*Body Formatting*/
+    body {
+        
+        line-height: 2.8;
+        color: #25262A;
+    }
+  /*Background and font color for middle container*/  
+    .bg-2 { 
+        font: 22px "Montserrat", sans-serif;
+        background-color: #474e5d; /* Dark Blue */
+        color: #ffffff;
+        margin-bottom: 0%;
+    }
+  /*Background and font color for form*/  
+    .bg-3 { 
+        background-color: #ffffff; /* White */
+        color: #555555;
+    }
+  /*Padding for middle container*/  
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+  /*Margin for form*/ 
+    form {
+      margin-top: 1%;
+      padding-top: 0%;
+      font: 22px "Montserrat", sans-serif;
+      margin-left: 10%;
+      margin-right: 30%;
+
+    }
+  /*Formatting for top error alert after clicking submit*/  
+    .error {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 2%;
+
+    }
+  /*Changing border color of input box*/  
+    .red{
+      border-color: red;
+    }
+  
+    .form-group{
+      margin-top: 5%;
+    }
+  </style>
+</head>
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<form>
+<div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
+  <div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
+    
+    <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
+      <h3>Create a new project!</h3>
+      <p>Please enter your project specifications!!</p>
+    </div>
+    <div class="col-sm-12 container-fluid bg-3 text-left" style="margin-top: 2%;">
+      
+     <form class="form" name="form" ng-submit="register(form)" novalidate>
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <label>Name:</label>
+
+          <input placeholder="Enter project name." type="text" name="name" class="form-control" ng-model="user.name"
+                 required/>
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            <small>A name is required</small>
+          </p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-success': form.description.$valid && submitted,
+                                            'has-error': form.description.$invalid && submitted }">
+          <label>Project Description:</label>
+
+          <input placeholder="Enter project description." type="text" name="description" class="form-control" ng-model="description"
+                 >
+        </div>
+        <div  class="form-group" ng-class="{ 'has-success': form.incentives.$valid && submitted,
+                                            'has-error': form.incentives.$invalid && submitted }">
+          <label>Incentives:</label>
+
+          <input placeholder="Enter project incentives." type="text" name="incentives" class="form-control" ng-model="incentives"
+                 >
+        </div>
+        <!-- <input type="text" ng-model="name"> -->
+        <!-- <input type="text" ng-model="description">
+        <input type="text" ng-model="incentives"> -->
+        <div class="form-group" ng-class="{ 'has-success': form.file.$valid && submitted,
+                                            'has-error': form.file.$invalid && submitted }">
+          <label>Description File:</label>
+          <input 
+            type="file" 
+            ngf-select 
+            file-model="myFile" 
+            name="file" 
+            ngf-max-size="5MB" 
+          required/>
+          <p class="help-block" ng-show="form.file.$error.required && submitted">
+            <small>A description file is required</small>
+          </p>
+        </div>
+        
+        <!-- <button ng-click="submit()">Submit</button> -->
+        <button class="btn btn-inverse btn-lg btn-login" style="margin-top: 5%;" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<!-- <form>
   <input type="text" ng-model="name">
   <input type="text" ng-model="description">
   <input type="text" ng-model="incentives">
@@ -12,8 +126,8 @@
     ngf-max-size="5MB" 
   />
   <button ng-click="submit()">Submit</button>
-</form>
-</div>
+</form> -->
+
 
 <footer class="footer">
   <div class="container">

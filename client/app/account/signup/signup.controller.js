@@ -5,7 +5,7 @@ angular.module('imgApp')
     $scope.user = {};
     $scope.errors = {};
     $scope.role = "user";
-
+    $scope.regEx="[0-9]{10}"
     $scope.register = function(form) {
       $scope.submitted = true;
 
@@ -14,6 +14,7 @@ angular.module('imgApp')
           name: $scope.user.name,
           email: $scope.user.email,
           password: $scope.user.password,
+          phone: $scope.user.phone,
           role: $scope.role
         })
         .then( function() {

@@ -5,12 +5,13 @@
   <style type="text/css">
     /*Body Formatting*/
     body {
-        font: 22px "Montserrat", sans-serif;
+        
         line-height: 2.8;
         color: #25262A;
     }
   /*Background and font color for middle container*/  
     .bg-2 { 
+        font: 22px "Montserrat", sans-serif;
         background-color: #474e5d; /* Dark Blue */
         color: #ffffff;
     }
@@ -26,6 +27,7 @@
     }
   /*Margin for form*/ 
     form {
+      font: 22px "Montserrat", sans-serif;
       margin-left: 10%;
       margin-right: 30%;
 
@@ -41,38 +43,7 @@
     .red{
       border-color: red;
     }
-  /*Radio button*/
-    input[type="radio"].fancy {
-          opacity: 0;
-          margin-right: -12px;
-      }
-
-      input[type="radio"].fancy + label::before {
-          content: "";
-          overflow: hidden;
-          font-size: 10px;
-          text-align: center;
-          margin-right: 3px;
-          display: inline-block;
-          vertical-align: middle;
-          border: 1px solid #333333;
-          background-color: #EEEEEE;
-          width: 12px;
-          height: 12px;
-          -moz-border-radius: 6px;
-          -webkit-border-radius: 6px;
-          border-radius: 6px;
-      }
-
-      input[type="radio"].fancy:checked + label::before {
-          content: "•";
-          color: #777777;
-          background-color: #FFFFFF;
-      }
-
-      input[type="radio"].fancy:disabled + label::before {
-          background-color: #999999;
-      }
+  
   </style>
 </head>
 <div ng-include="'components/navbar/navbar.html'"></div>
@@ -92,28 +63,28 @@
                                             'has-error': form.name.$invalid && submitted }">
           <label>Name:</label>
 
-          <input type="text" name="name" class="form-control" ng-model="user.name"
+          <input placeholder="Enter your full name." type="text" name="name" class="form-control" ng-model="user.name"
                  required/>
           <p class="help-block" ng-show="form.name.$error.required && submitted">
-            A name is required
+            <small>A name is required</small>
           </p>
         </div>
 
         <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
-                                            'has-error': form.email.$invalid && submitted }">
+                                            'has-error': form.email.$invalid && submitted }"s>
           <label>Email:</label>
 
-          <input type="email" name="email" class="form-control" ng-model="user.email"
+          <input placeholder="Enter your e-mail." type="email" name="email" class="form-control" ng-model="user.email"
                  required
                  mongoose-error/>
           <p class="help-block" ng-show="form.email.$error.email && submitted">
-            Doesn't look like a valid email.
+            <small>Doesn't look like a valid email.</small>
           </p>
           <p class="help-block" ng-show="form.email.$error.required && submitted">
-            What's your email address?
+            <small>What's your email address?</small>
           </p>
           <p class="help-block" ng-show="form.email.$error.mongoose">
-            {{ errors.email }}
+            <small>{{ errors.email }}</small>
           </p>
         </div>
 
@@ -121,33 +92,33 @@
                                             'has-error': form.password.$invalid && submitted }">
           <label>Password:</label>
 
-          <input type="password" name="password" class="form-control" ng-model="user.password"
+          <input placeholder="Enter password." type="password" name="password" class="form-control" ng-model="user.password"
                  ng-minlength="3"
                  required
                  mongoose-error/>
           <p class="help-block"
              ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
-            Password must be at least 3 characters.
+            <small>Password must be at least 3 characters.</small>
           </p>
           <p class="help-block" ng-show="form.password.$error.mongoose">
-            {{ errors.password }}
+            <small>{{ errors.password }}</small>
           </p>
         </div>
         <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted,
                                             'has-error': form.phone.$invalid && submitted }">
           <label>Phone Number:</label>
 
-          <input type="phone" name="phone" class="form-control" ng-model="user.phone"
+          <input placeholder="Enter phone number." type="phone" name="phone" class="form-control" ng-model="user.phone" ng-pattern="regEx"
                  required
                  mongoose-error/>
-          <p class="help-block" ng-show="form.phone.$error.number && submitted">
-            Doesn't look like a valid Phone number.
+          <p class="help-block" ng-show="form.phone.$error.pattern && submitted">
+            <small>Phone no. should be 10 digits.</small>
           </p>
           <p class="help-block" ng-show="form.phone.$error.required && submitted">
-            What's your phone number?
+            <small>What's your phone number?</small>
           </p>
-          <p class="help-block" ng-show="form.email.$error.mongoose">
-            {{ errors.email }}
+          <p class="help-block" ng-show="form.phone.$error.mongoose">
+            <small>{{ errors.phone }}</small>
           </p>
         </div>
 
