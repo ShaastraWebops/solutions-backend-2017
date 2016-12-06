@@ -1,18 +1,83 @@
+<head>
+  <title>Shaastra Solutions</title>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <style type="text/css">
+    /*Body Formatting*/
+    body {
+        
+        line-height: 2.8;
+        color: #25262A;
+        margin-right: 1%;
+    }
+  /*Background and font color for middle container*/  
+    .bg-2 { 
+        font: 22px "Montserrat", sans-serif;
+        background-color: #474e5d; /* Dark Blue */
+        color: #ffffff;
+    }
+  /*Background and font color for form*/  
+    .bg-3 { 
+        background-color: #ffffff; /* White */
+        color: #555555;
+    }
+  /*Padding for middle container*/  
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+  /*Margin for form*/ 
+    table {
+      font: 18px "Montserrat", sans-serif;
+      margin-left: 0.5%;
+      margin-right: 0.5%;
+
+    }
+  /*Formatting for top error alert after clicking submit*/  
+    .error {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 2%;
+
+    }
+  /*Changing border color of input box*/  
+    .red{
+      border-color: red;
+    }
+  
+  </style>
+</head>
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<button ng-repeat = "project in allProjects track by $index" ng-click="getInfo($index)">Get info for {{project.name}}</button>
+<div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
+	<div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
+	    <div class="col-sm-12">
+	      <h1>Sign up</h1>
+	    </div>
+	    <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
+	      <h3>Hello user!</h3>
+	      <p>Find information on projects here!!</p>
+	    </div>
+	    <header>
+	      <h1>
+	        <small>Get information for:</small>
+	      </h1>
+	    </header>
+		<button ng-repeat = "project in allProjects track by $index" ng-click="getInfo($index)">Get info for {{project.name}}</button>
 
-<h1 ng-if="selectedProject">{{selectedProject.name}}</h1>
-<div ng-if="selectedProject">{{selectedProject.description}}</div>
-<div ng-if="selectedProject">{{selectedProject.incentives}}</div>
+		<h1 ng-if="selectedProject">{{selectedProject.name}}</h1>
+		<div ng-if="selectedProject">{{selectedProject.description}}</div>
+		<div ng-if="selectedProject">{{selectedProject.incentives}}</div>
 
-<div ng-repeat="file in files"><a ng-if="selectedProject.name == file.split('.')[0]" ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div><br><br><br>
-<input ng-if="selectedProject"
-    type="file" 
-    ngf-select 
-    file-model="myFile" 
-    name="file" 
-    ngf-max-size="5MB" 
-/>
-<button ng-if="selectedProject" ng-click="applyForProject(selectedProject._id)">Apply</button>
-</div>
+		<div ng-repeat="file in files"><a ng-if="selectedProject.name == file.split('.')[0]" ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div><br><br><br>
+			<input ng-if="selectedProject"
+			    type="file" 
+			    ngf-select 
+			    file-model="myFile" 
+			    name="file" 
+			    ngf-max-size="5MB" 
+			/>
+			<button ng-if="selectedProject" ng-click="applyForProject(selectedProject._id)">Apply</button>
+		</div>
+	</div>
+</div>		

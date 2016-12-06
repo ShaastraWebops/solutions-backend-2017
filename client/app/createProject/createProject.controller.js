@@ -24,15 +24,15 @@ angular.module('imgApp')
          createdBy: Auth.getCurrentUser()._id
 
        }
-       var file = $scope.myFile;
+       
+        
+    };
+
+    var file = $scope.myFile;
         console.dir(file);
         var uploadUrl = "/api/imgs/";
         fileUpload.uploadFileToUrl(file, uploadUrl, $scope.data);
        $location.path('/');
-        
-    };
-
-
       
       // $http.post("/api/imgs", $scope.data).then(function (response){
       //   console.log(response.data);
