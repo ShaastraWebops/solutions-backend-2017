@@ -12,6 +12,7 @@ angular.module('imgApp')
     //     incentives: $scope.incentives,
     //     createdBy: Auth.getCurrentUser()._id
     //   }
+    
     $scope.register = function(form) {
       $scope.submitted = true;
 
@@ -30,6 +31,7 @@ angular.module('imgApp')
        $location.path('/');
         
     };
+
 
       
       // $http.post("/api/imgs", $scope.data).then(function (response){

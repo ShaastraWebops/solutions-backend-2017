@@ -50,6 +50,11 @@
     .form-group{
       margin-top: 5%;
     }
+    .custom{
+      font: 15px "Montserrat", sans-serif;
+      border-radius: 2%;
+      margin-top: 2%;
+    }
   </style>
 </head>
 <div ng-include="'components/navbar/navbar.html'"></div>
@@ -68,7 +73,7 @@
                                             'has-error': form.name.$invalid && submitted }">
           <label>Name:</label>
 
-          <input placeholder="Enter project name." type="text" name="name" class="form-control" ng-model="user.name"
+          <input placeholder="Enter project name." type="text" name="name" class="form-control" ng-model="name"
                  required/>
           <p class="help-block" ng-show="form.name.$error.required && submitted">
             <small>A name is required</small>
@@ -94,13 +99,15 @@
         <div class="form-group" ng-class="{ 'has-success': form.file.$valid && submitted,
                                             'has-error': form.file.$invalid && submitted }">
           <label>Description File:</label>
-          <input 
-            type="file" 
-            ngf-select 
-            file-model="myFile" 
-            name="file" 
-            ngf-max-size="5MB" 
-          required/>
+            <input 
+              type="file"
+              class="custom" 
+              ngf-select 
+              file-model="myFile" 
+              name="file" 
+              ngf-max-size="5MB" 
+            required/>
+          
           <p class="help-block" ng-show="form.file.$error.required && submitted">
             <small>A description file is required</small>
           </p>
