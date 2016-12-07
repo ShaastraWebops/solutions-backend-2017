@@ -6,6 +6,9 @@ angular.module('imgApp')
       .state('projectStatus', {
         url: '/projectStatus',
         templateUrl: 'app/projectStatus/projectStatus.html',
-        controller: 'ProjectStatusCtrl'
+        controller: 'ProjectStatusCtrl',
+        access: {
+          allow: ['company']
+        } 
       });
   });

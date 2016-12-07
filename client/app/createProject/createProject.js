@@ -6,6 +6,9 @@ angular.module('imgApp')
       .state('createProject', {
         url: '/createProject',
         templateUrl: 'app/createProject/createProject.html',
-        controller: 'CreateProjectCtrl'
+        controller: 'CreateProjectCtrl',
+        access: {
+          allow: ['company']
+        } 
       });
   });

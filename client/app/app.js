@@ -51,4 +51,28 @@ angular.module('imgApp', [
         }
       });
     });
+  })
+
+  .run(function ($rootScope, $location, Auth, $state) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      Auth.isLoggedInAsync(function(loggedIn) {
+        if (next.authenticate && !loggedIn) {
+          $location.url('/login');
+        }
+        if (next.access) {
+          var permissions = next.access;
+          var userRole = Auth.getCurrentUser().role;
+          if (permissions.except) {
+            if (permissions.except.indexOf(userRole) > -1) {
+              $location.url('/');
+            }
+          } else if (permissions.allow) {
+            if (permissions.allow.indexOf(userRole) < 0) {
+              $location.url('/');
+            }
+          }
+        }        
+      });
+    });
   });

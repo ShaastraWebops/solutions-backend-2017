@@ -6,6 +6,9 @@ angular.module('imgApp')
       .state('allProjects', {
         url: '/allProjects',
         templateUrl: 'app/allProject/allProject.html',
-        controller: 'AllProjectCtrl'
+        controller: 'AllProjectCtrl',
+        access: {
+          allow: ['admin']
+        } 
       });
   });

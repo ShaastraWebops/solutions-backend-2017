@@ -6,6 +6,9 @@ angular.module('imgApp')
       .state('projects', {
         url: '/projects',
         templateUrl: 'app/project/project.html',
-        controller: 'ProjectCtrl'
+        controller: 'ProjectCtrl',
+        access: {
+          allow: ['student']
+        } 
       });
   });
