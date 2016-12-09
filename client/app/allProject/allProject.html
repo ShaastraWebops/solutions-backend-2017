@@ -53,12 +53,13 @@
 <div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
   <div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
     <div class="col-sm-12">
-      <h1>Sign up</h1>
+      <h1></h1>
     </div>
     <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
       <h3>Hello admin!</h3>
       <p>Approve projects of your choice here!!</p>
     </div>
+    <h2>Projects Approval:</h2>
     <table style="width:100%; margin-top: 5%; border-collapse: collapse; margin-right: 0.5%;" id="table1"  class="bg3 table table-striped table-bordered col-md-12">
       <thead>
         <tr>
@@ -81,5 +82,29 @@
         </tr>
       </tbody>
     </table>
+
+    <h2>Company Approval:</h2>
+    <center><h3 ng-show="allCompanies.length == 0">There are no new companies</h3> </center>
+    <table ng-hide="allCompanies.length == 0" style="width:100%; margin-top: 5%; border-collapse: collapse; margin-right: 0.5%;" id="table1"  class="bg3 table table-striped table-bordered col-md-12">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Company Name</th>
+          <th>Company Email</th>
+          <th>Company Phone</th>
+          <th>Approval Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="company in allCompanies track by $index">
+          <td>{{ $index + 1 }}</td>
+          <td>{{ company.name }}</td>
+          <td>{{ company.email }}</td>
+          <td>{{ company.phone }}</td>
+          <td><input type="checkbox" ng-model="company.isApproved" ng-click="approvalStatusUpdateCompany($index, company.isApproved)"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br>
   </div>
  </div> 

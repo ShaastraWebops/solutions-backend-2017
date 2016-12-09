@@ -10,6 +10,8 @@ angular.module('imgApp')
     });
 
     $scope.getStatus = function (index){
+      $scope.selectedProject = $scope.projectsCreated[index];
+      console.log($scope.selectedProject);
       var projid = $scope.projectsCreated[index]._id;
       console.log(projid);
       $http.get("/api/imgs/" + projid).then(function (response){

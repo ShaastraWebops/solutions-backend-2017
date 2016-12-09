@@ -14,8 +14,10 @@ angular.module('imgApp')
             headers: {'Content-Type': undefined}
         })
         .success(function(){
+            alert("Successfully submitted");
         })
         .error(function(){
+            alert("There was some error. Please try again");
         });
     },
 
@@ -29,8 +31,10 @@ angular.module('imgApp')
             headers: {'Content-Type': undefined}
         })
         .success(function(){
+            alert("Successfully submitted");
         })
         .error(function(){
+            alert("There was some error. Please try again");
         });
     }
 }]);

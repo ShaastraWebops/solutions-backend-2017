@@ -11,8 +11,10 @@ var upload = multer({ storage: storage2, limits: {fileSize: 1000000}});
 var router = express.Router();
 
 router.get('/', auth.hasRole('admin'), controller.index);
+router.get('/companies', auth.hasRole('admin'), controller.getCompanies);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
+router.put('/:id', auth.isAuthenticated(), controller.update);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);

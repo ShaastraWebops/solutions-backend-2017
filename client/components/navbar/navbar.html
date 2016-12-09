@@ -11,10 +11,10 @@
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li ng-show="isAdmin()"><a ui-sref="allProjects">All Projects</a></li>
+        <li ng-show="isAdmin()"><a ui-sref="allProjects">All Projects and Companies</a></li>
         <li ng-show="isUser()"><a ui-sref="projects">Projects</a></li>
-        <li ng-show="isCompany()"><a ui-sref="createProject">Create a Project</a></li>
-        <li ng-show="isCompany()"><a ui-sref="projectStatus">Project Status</a></li>
+        <li ng-show="isCompany() && getCurrentUser().isApproved"><a ui-sref="createProject">Create a Project</a></li>
+        <li ng-show="isCompany() && getCurrentUser().isApproved"><a ui-sref="projectStatus">Project Status</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right nav-tabs">

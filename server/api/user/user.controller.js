@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
@@ -21,6 +22,13 @@ exports.index = function(req, res) {
   });
 };
 
+exports.getCompanies = function(req, res) {
+  User.find({role: 'company', isApproved: false}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.send(500, err);
+    res.json(200, users);
+  });
+};
+
 /**
  * Creates a new user
  */
@@ -31,6 +39,20 @@ exports.create = function (req, res, next) {
     if (err) return validationError(res, err);
     var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
     res.json({ token: token });
+  });
+};
+
+// Updates an existing user in the DB.
+exports.update = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  User.findById(req.params.id, function (err, img) {
+    if (err) { return handleError(res, err); }
+    if(!img) { return res.send(404); }
+    var updated = _.merge(img, req.body);
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, img);
+    });
   });
 };
 

@@ -15,6 +15,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  isApproved: { type: Boolean, default: false },
   hashedPassword: String,
   provider: String,
   salt: String,
