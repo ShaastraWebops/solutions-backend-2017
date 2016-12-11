@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('imgApp')
-  .controller('EditProfileCtrl', function ($scope, $http, User, Auth) {
+  .controller('EditProfileCtrl', function ($scope, $http, User, Auth, $window, $location) {
   	$scope.errors = {};
-  	//$scope.user = {};
+  	$scope.user = {};
   	$scope.regEx="[0-9]{10}"
   	$scope.getCurrentUser = Auth.getCurrentUser;
 
@@ -46,8 +46,8 @@ angular.module('imgApp')
 
         })
         .then( function() {
-	          $scope.message = 'Profile successfully updated.';
-
+	          //$scope.message = 'Profile successfully updated.';
+	          //$window.location.href = '/auth/' + provider;
 	          $location.path('/');
 	        });
     }    
