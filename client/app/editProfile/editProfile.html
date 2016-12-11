@@ -1,0 +1,173 @@
+<!-- <div ng-include="'components/navbar/navbar.html'" style="margin-bottom: 0%; height: 20%;"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
+        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="$ctrl.deleteThing(thing)">&times;</button></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <form class="thing-form">
+    <label>Syncs in realtime across clients</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="$ctrl.newThing">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="$ctrl.addThing()">Add New</button>
+      </span>
+    </p>
+  </form>
+</div>
+ -->
+<head>
+  <title>Shaastra Solutions</title>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <style type="text/css">
+    /*Body Formatting*/
+    body {
+        
+        line-height: 2.8;
+        color: #25262A;
+    }
+  /*Background and font color for middle container*/  
+    .bg-2 { 
+        font: 22px "Montserrat", sans-serif;
+        background-color: #474e5d; /* Dark Blue */
+        color: #ffffff;
+    }
+  /*Background and font color for form*/  
+    .bg-3 { 
+        background-color: #ffffff; /* White */
+        color: #555555;
+    }
+  /*Padding for middle container*/  
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+  /*Margin for form*/ 
+    form {
+      font: 22px "Montserrat", sans-serif;
+      margin-left: 10%;
+      margin-right: 30%;
+
+    }
+  /*Formatting for top error alert after clicking submit*/  
+    .error {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 2%;
+
+    }
+  /*Changing border color of input box*/  
+    .red{
+      border-color: red;
+    }
+  
+  </style>
+</head>
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
+  <div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
+    <div class="col-sm-12">
+      <h1>Sign up</h1>
+    </div>
+    <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
+      <h3>Hello User!</h3>
+      <p>You can edit your profile here!!</p>
+    </div>
+    <div style="margin-left: 10%; margin-top: 2%;">
+          <button class="btn btn-default btn-lg btn-register" ng-click=deleteProfile()>
+            Delete Profile
+          </button>
+    </div> 
+    <div style="margin-left: 10%;">
+     <p class="help-block"><h1><small> {{ message }}</small></h1> </p>     
+     </div>
+    <div class="col-sm-12 container-fluid bg-3 text-left" style="margin-top: 2%;">
+      <form class="form" name="form" ng-submit="upProfile(form)" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <label>Name:</label>
+
+          <input value="getCurrentUser().name" placeholder="Enter your full name." type="text" name="name" class="form-control" ng-model="user.name"
+                 required/>
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            <small>A name is required</small>
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
+                                            'has-error': form.email.$invalid && submitted }"s>
+          <label>Email:</label>
+
+          <input value="getCurrentUser().email" placeholder="Enter your new e-mail." type="email" name="email" class="form-control" ng-model="user.email"
+                 required
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.email.$error.email && submitted">
+            <small>Doesn't look like a valid email.</small>
+          </p>
+          <p class="help-block" ng-show="form.email.$error.required && submitted">
+            <small>What's your email address?</small>
+          </p>
+          <p class="help-block" ng-show="form.email.$error.mongoose">
+            <small>{{ errors.email }}</small>
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                            'has-error': form.password.$invalid && submitted }">
+          <label>Password:</label>
+
+          <input placeholder="Enter password." type="password" name="oldPassword" class="form-control" ng-model="user.oldPassword"
+                 ng-minlength="3"
+                 required
+                 mongoose-error/>
+          <p class="help-block"
+             ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+            <small>Password must be at least 3 characters.</small>
+          </p>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+            <small>{{ errors.password }}</small>
+          </p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted,
+                                            'has-error': form.phone.$invalid && submitted }">
+          <label>Phone Number:</label>
+
+          <input value="getCurrentUser().phone" placeholder="Enter new phone number." type="phone" name="phone" class="form-control" ng-model="user.phone" ng-pattern="regEx"
+                 required
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.phone.$error.pattern && submitted">
+            <small>Phone no. should be 10 digits.</small>
+          </p>
+          <p class="help-block" ng-show="form.phone.$error.required && submitted">
+            <small>What's your phone number?</small>
+          </p>
+          <p class="help-block" ng-show="form.phone.$error.mongoose">
+            <small>{{ errors.phone }}</small>
+          </p>
+        </div>
+
+        <br>
+       
+
+         <br><br><br>
+
+        <div>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+            Edit Details
+          </button>
+          
+        </div>
+
+        <hr>
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>

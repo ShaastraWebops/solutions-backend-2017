@@ -43,18 +43,33 @@ exports.create = function (req, res, next) {
 };
 
 // Updates an existing user in the DB.
-exports.update = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  User.findById(req.params.id, function (err, img) {
-    if (err) { return handleError(res, err); }
-    if(!img) { return res.send(404); }
-    var updated = _.merge(img, req.body);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, img);
-    });
+ exports.update = function(req, res) {
+   if(req.body._id) { delete req.body._id; }
+   User.findById(req.params.id, function (err, img) {
+     if (err) { return handleError(res, err); }
+     if(!img) { return res.send(404); }
+     var updated = _.merge(img, req.body);
+     updated.save(function (err) {
+       if (err) { return handleError(res, err); }
+       return res.json(200, img);
+     });
   });
-};
+ };
+// exports.update = function(req, res) {
+//   var oldPass = String(req.body.oldPassword);
+//   if(req.body._id) { delete req.body._id; }
+//   User.findById(req.params.id, function (err, img) {
+//     if (err) { return handleError(res, err); }
+//     if(!img) { return res.send(404); }
+//     if(user.authenticate(oldPass)) {
+//       var updated = _.merge(img, req.body);
+//       updated.save(function (err) {
+//         if (err) { return handleError(res, err); }
+//         return res.json(200, img);
+//       });
+//     }  
+//   });
+// };
 
 
 //Apply for a project
@@ -133,7 +148,30 @@ exports.changePassword = function(req, res, next) {
     }
   });
 };
+/**
+ * Updates a user's profile
+ */
+exports.upProfile = function(req, res, next) {
+  var userId = req.user._id;
+  var oldPass = String(req.body.oldPassword);
+  var newName = String(req.body.name);
+  var newEmail = String(req.body.email);
+  var newPhone = String(req.body.phone);
 
+  User.findById(userId, function (err, user) {
+    if(user.authenticate(oldPass)) {
+      user.name = newName;
+      user.email = newEmail;
+      user.phone = newPhone;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+      });
+    } else {
+      res.send(403);
+    }
+  });
+};
 /**
  * Get my info
  */
