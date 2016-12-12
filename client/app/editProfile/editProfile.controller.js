@@ -6,6 +6,8 @@ angular.module('imgApp')
   	$scope.user = {};
   	$scope.regEx="[0-9]{10}"
   	$scope.getCurrentUser = Auth.getCurrentUser;
+  	$scope.user.name = $scope.getCurrentUser().name;
+  	$scope.user.phone = $scope.getCurrentUser().phone;
 
  //  	$scope.upProfile = function(form) {
  //      $scope.submitted = true;
@@ -47,17 +49,18 @@ angular.module('imgApp')
         .then( function() {
 	          //$scope.message = 'Profile successfully updated.';
 	          //$window.location.href = '/auth/' + provider;
-	          $location.path('/');
+	          alert('successfully edited');
+	          $window.location.reload();
 	        });
     }    
 
-      $scope.deleteProfile = function() {
-        $http.delete('/api/users/' + Auth.getCurrentUser()._id)
-        .then( function() {
-	          $scope.message = 'Profile successfully deleted.';
-	          //$location.path('/');
-	        });
-      };
+      // $scope.deleteProfile = function() {
+      //   $http.delete('/api/users/' + Auth.getCurrentUser()._id)
+      //   .then( function() {
+	     //      $scope.message = 'Profile successfully deleted.';
+	     //      //$location.path('/');
+	     //    });
+      // };
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };
