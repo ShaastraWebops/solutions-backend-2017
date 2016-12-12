@@ -41,8 +41,7 @@ angular.module('imgApp')
     $scope.upProfile = function() {
         $http.put('/api/users/' + Auth.getCurrentUser()._id,{
           name: $scope.user.name,
-	      email: $scope.user.email,
-	      phone: $scope.user.phone,
+	      phone: $scope.user.phone
 
         })
         .then( function() {
