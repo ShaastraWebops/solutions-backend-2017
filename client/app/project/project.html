@@ -76,7 +76,7 @@
 		<div class="bg3" ng-if="selectedProject" style="margin-left: 5%;">{{selectedProject.incentives}}</div>
 
 		<div class="bg3" ng-repeat="file in files" style="margin-left: 5%;"><a ng-if="selectedProject.name == file.split('.')[0]" ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div>
-			<input ng-if="selectedProject"
+			<input
 				class="custom" 
 				style="margin-left: 5%; margin-top: 0%;" 
 			    type="file" 

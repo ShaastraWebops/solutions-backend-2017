@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imgApp')
-.service('fileUpload', ['$http', function ($http) {
+.service('fileUpload', ['$http', '$location', function ($http, $location) {
     this.uploadFileToUrl = function(file, uploadUrl, data){
         var fd = new FormData();
         fd.append('file', file, data.name);
@@ -15,9 +15,11 @@ angular.module('imgApp')
         })
         .success(function(){
             alert("Successfully submitted");
+            $location.url("/");
         })
         .error(function(){
             alert("There was some error. Please try again");
+            $location.url("/");
         });
     },
 
@@ -32,9 +34,11 @@ angular.module('imgApp')
         })
         .success(function(){
             alert("Successfully submitted");
+            $location.url("/");
         })
         .error(function(){
             alert("There was some error. Please try again");
+            $location.url("/");
         });
     }
 }]);

@@ -10,6 +10,7 @@ angular.module('imgApp')
           $scope.allProjects.push($scope.totalProjects[i]);
       }
       console.log($scope.allProjects);
+      $scope.selectedProject = $scope.allProjects [0];
     });
 
     $http.get('/api/imgs/files/getAll').then(function (response){
