@@ -79,6 +79,7 @@
           <td>{{ project.incentives }}</td>
           <td><div ng-repeat="file in files"><a ng-if="project.name == file.split('.')[0]" ng-href="/api/imgs/file/{{file}}" target="_blank">{{file}}</a></div></td>
           <td><input type="checkbox" ng-model="project.isApproved" ng-click="approvalStatusUpdate($index, project.isApproved)"></td>
+          <td><button class="btn btn-info" ng-click="editProj(project)">Edit</button></td>
         </tr>
       </tbody>
     </table>

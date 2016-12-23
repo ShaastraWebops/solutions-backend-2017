@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('imgApp')
-  .controller('AllProjectCtrl', function ($scope, $http, socket, Auth, $location, fileUpload) {
+  .controller('AllProjectCtrl', function ($scope, $http, $state, socket, Auth, $location, fileUpload) {
     
     $http.get('/api/imgs').then(function (response){
       $scope.allProjects = response.data;
       console.log($scope.allProjects);
     });
+
+    $scope.editProj=function(project){
+      $state.go('editProject', {projid: project._id});
+    }
 
     $http.get('/api/users/companies').then(function (response){
       $scope.allCompanies = response.data;

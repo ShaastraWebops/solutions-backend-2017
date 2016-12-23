@@ -1,0 +1,134 @@
+<head>
+  <title>Shaastra Solutions</title>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <style type="text/css">
+    /*Body Formatting*/
+    body {
+        
+        line-height: 2.8;
+        color: #25262A;
+    }
+  /*Background and font color for middle container*/  
+    .bg-2 { 
+        font: 22px "Montserrat", sans-serif;
+        background-color: #474e5d; /* Dark Blue */
+        color: #ffffff;
+    }
+  /*Background and font color for form*/  
+    .bg-3 { 
+        background-color: #ffffff; /* White */
+        color: #555555;
+    }
+  /*Padding for middle container*/  
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+  /*Margin for form*/ 
+    form {
+      font: 22px "Montserrat", sans-serif;
+      margin-left: 10%;
+      margin-right: 30%;
+
+    }
+  /*Formatting for top error alert after clicking submit*/  
+    .error {
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 2%;
+
+    }
+  /*Changing border color of input box*/  
+    .red{
+      border-color: red;
+    }
+  	.project-select{
+				border-radius: 5px;
+				border-width: 3px;
+				border-color: black;
+				padding: 5px 10px 5px 10px;
+				margin: 25px 0px 5px 50px;
+				width: 30%;
+
+			}
+  </style>
+</head>
+
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container" style="margin-left: 0%; padding-left: 0%; margin-right: 0%; padding-right: 0%; width: 100%;">
+  <div class="row" style="margin-left: 0%; margin-right: 0%; padding-right: 0%;">
+    <div class="col-sm-12">
+      <h1></h1>
+    </div>
+    <div style="padding-top: 10%; width: 100%; margin-left: 0%; margin-right: 0%;" class="container-fluid bg-2 text-center">
+      <h3>Hello {{user}}</h3>
+      <p>You can edit your projects here!!</p>
+    </div>
+    <!-- <div style="margin-left: 10%; margin-top: 2%;">
+          <button class="btn btn-default btn-lg btn-register" ng-click=deleteProfile()>
+            Delete Profile
+          </button>
+    </div>  -->
+    <div class="col-sm-12 container-fluid bg-3 text-left" style="margin-top: 2%;">
+      
+      <form class="form" name="projform" ng-submit="upProject(projform)" novalidate>
+       
+        <div class="form-group" ng-class="{ 'has-success': projform.projname.$valid && submitted,
+                                            'has-error': projform.projname.$invalid && submitted }">
+          <label>Name:</label>
+
+          <input value="projectName" placeholder="Enter project name." type="text" name="projname" class="form-control" ng-model="projectName"
+                 required/>
+          <p class="help-block" ng-show="projform.projname.$error.required && submitted">
+            <small>A name is required</small>
+          </p>
+        </div>
+
+
+        
+        <br>
+       
+
+
+         <div class="form-group" ng-class="{ 'has-success': projform.projdesc.$valid && submitted,
+                                            'has-error': projform.projdesc.$invalid && submitted }">
+          <label>Description:</label>
+
+          <input value="projectDescription" placeholder="Enter project description" type="text" name="projdesc" class="form-control" ng-model="projectDescription"
+                 required/>
+          <p class="help-block" ng-show="projform.projdesc.$error.required && submitted">
+            <small>A description is required</small>
+          </p>
+        </div>
+        <br>
+       
+       	<div class="form-group" ng-class="{ 'has-success': projform.projinc.$valid && submitted,
+                                            'has-error': projform.projinc.$invalid && submitted }">
+          <label>Incentives:</label>
+
+          <input value="projectIncentives" placeholder="Enter project incentives" type="text" name="projinc" class="form-control" ng-model="projectIncentives"
+                 required/>
+          <p class="help-block" ng-show="projform.projinc.$error.required && submitted">
+            <small>An incentive is required</small>
+          </p>
+        </div>
+        <br>
+       
+
+
+        
+        <div>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+            Save Details
+          </button>
+          
+        </div>
+
+        <hr>
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>
+

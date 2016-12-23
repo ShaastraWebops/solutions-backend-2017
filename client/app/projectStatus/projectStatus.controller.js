@@ -1,13 +1,17 @@
 'use strict';
 
 angular.module('imgApp')
-  .controller('ProjectStatusCtrl', function ($scope, $http, socket, Auth, $location, fileUpload) {
+  .controller('ProjectStatusCtrl', function ($scope, $http, $state , socket, Auth, $location, fileUpload) {
     
 
     $http.get("/api/users/me").then(function (response){
       console.log(response.data.projectsCreated);
       $scope.projectsCreated = response.data.projectsCreated;
     });
+
+    $scope.editProj=function(){
+      $state.go('editProject', {projid: $scope.selectedProject._id});
+    }
 
     $scope.getStatus = function (index){
       $scope.selectedProject = $scope.projectsCreated[index];
