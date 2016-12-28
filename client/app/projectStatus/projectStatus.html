@@ -75,7 +75,6 @@
           <tr>
             <th class="col-md-3">No.</th>
             <th class="col-md-3">Name</th>
-            <th class="col-md-3">Email</th>
             <th class="col-md-3">Resume</th>
           </tr>
       </thead>
@@ -83,7 +82,6 @@
         <tr ng-repeat="student in studentsApplied track by $index">
           <td class="col-md-3">{{ $index + 1 }}</td>
           <td class="col-md-3">{{ student.name }}</td>
-          <td class="col-md-3">{{ student.email }}</td>
           <td class="col-md-3"><div ng-repeat="file in files"><a ng-if="student._id == file.split('-')[1].split('.')[0]" ng-href="{{fileDownloadLink}}/{{file}}" target="_blank">{{file}}</a></div></td>
         </tr>
       </tbody>
